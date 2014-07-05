@@ -122,6 +122,22 @@ public class TestReflect {
     assertEquals(1, data.resolveUnion(s, new HashMap<String,Float>()));
   }
 
+  @Test public void testUnionWithFixed() {
+    Schema s = new Schema.Parser().parse
+        ("[\"null\", {\"type\":\"fixed\",\"name\":\"f\",\"size\":1}]");
+    Schema f = new Schema.Parser().parse("{\"type\":\"fixed\",\"name\":\"f\",\"size\":1}");
+    GenericData data = ReflectData.get();
+    assertEquals(1, data.resolveUnion(s, new GenericData.Fixed(f)));
+  }
+
+  @Test public void testUnionWithEnum() {
+    Schema s = new Schema.Parser().parse
+        ("[\"null\", {\"type\":\"enum\",\"name\":\"E\",\"namespace\":" +
+            "\"org.apache.avro.reflect.TestReflect$\",\"symbols\":[\"A\",\"B\"]}]");
+    GenericData data = ReflectData.get();
+    assertEquals(1, data.resolveUnion(s, E.A));
+  }
+
   @Test public void testUnionWithBytes() {
     Schema s = new Schema.Parser().parse ("[\"null\", \"bytes\"]");
     GenericData data = ReflectData.get();
@@ -701,6 +717,24 @@ public class TestReflect {
     assertEquals(a, decoded);
     decoded = reader.read(null, d);
     assertEquals(b, decoded);
+  }
+
+  @Test public void testDisableUnsafe() throws Exception {
+    String saved = System.getProperty("avro.disable.unsafe");
+    try {
+      System.setProperty("avro.disable.unsafe", "true");
+      ReflectData.ACCESSOR_CACHE.clear();
+      ReflectionUtil.resetFieldAccess();
+      testMultipleAnnotations();
+      testRecordWithNullIO();
+    } finally {
+      if (saved == null)
+        System.clearProperty("avro.disable.unsafe");
+      else
+        System.setProperty("avro.disable.unsafe", saved);
+      ReflectData.ACCESSOR_CACHE.clear();
+      ReflectionUtil.resetFieldAccess();
+    }
   }
 
   public static class SampleRecord {

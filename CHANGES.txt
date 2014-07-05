@@ -20,6 +20,16 @@ Trunk (not yet released)
     AVRO-1522. Java: Add support for compression codecs to SortedKeyValueFile.
     (Steven Willis via cutting)
 
+    AVRO-1474. C++ resolvind decoder doesn't work when reader schema
+    has more fields than writer schema. (thiru with help from Ramana
+    Suvarapu)
+
+    AVRO-1352. Schema for fixed types corrupted when writing out in
+    JSON format (Steve Roehrs via thiru)
+
+    AVRO-1533. Java: In schema resolution, permit conversion between
+    bytes and string. (cutting)
+
   OPTIMIZATIONS
 
     AVRO-1455. Deep copy does not need to create new instances for primitives.
@@ -49,6 +59,12 @@ Trunk (not yet released)
     (Robert Chu via cutting)
 
     AVRO-1512. Java: Support Thrift unions. (cutting)
+
+    AVRO-1535. Java: Make the name .X to refer to X in the null namespace.
+    This permits aliases to names in the null namespace. (cutting)
+
+    AVRO-1536. Ruby: Remove monkeypatching of Enumerable.
+    (Willem van Bergen via martinkl)
 
   BUG FIXES
 
@@ -80,6 +96,22 @@ Trunk (not yet released)
 
     AVRO-1500. Java: Fix bug in handling of Thrift shorts in unions.
     (Michael Pershyn via cutting)
+
+    AVRO-1513. Perl: Remove test plans from unit test files.
+    (John Karp via cutting)
+
+    AVRO-1462. Perl: Stop spurious serializer warnings about Non-ASCII
+    decimal characters.  (John Karp via cutting)
+
+    AVRO-1470. Perl: Fix encoding of boolean values. (John Karp via cutting)
+
+    AVRO-1525. Java: ReflectData cannot resolve union with fixed. (tomwhite)
+
+    AVRO-1499. Ruby: Fix encoding issue that caused corrupted data files
+    to be written under Ruby 2.0+. (Willem van Bergen and martinkl)
+
+    AVRO-1498. Java: Fix custom encodings to work in reflect without
+    Unsafe access. (Christopher Mann via cutting)
 
 Avro 1.7.6 (15 January 2014)
 

@@ -164,6 +164,7 @@ public class ReflectData extends SpecificData {
     if (super.isRecord(datum)) return true;
     if (datum instanceof Collection) return false;
     if (datum instanceof Map) return false;
+    if (datum instanceof GenericFixed) return false;
     return getSchema(datum.getClass()).getType() == Schema.Type.RECORD;
   }
 
@@ -205,7 +206,7 @@ public class ReflectData extends SpecificData {
     }
   }
   
-  private static final ConcurrentHashMap<Class<?>, ClassAccessorData> 
+  static final ConcurrentHashMap<Class<?>, ClassAccessorData> 
     ACCESSOR_CACHE = new ConcurrentHashMap<Class<?>, ClassAccessorData>();
 
   private static class ClassAccessorData {
