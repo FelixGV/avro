@@ -42,8 +42,8 @@ class ConfigModule implements Module {
   static final String JETTY_PATH = "jetty.path";
   static final String JETTY_HEADER_SIZE = "jetty.header.size";
   static final String JETTY_BUFFER_SIZE = "jetty.buffer.size";
-  private static final String REPO_CLASS = "repo.class";
-  private static final String REPO_CACHE = "repo.cache";
+  private static final String REPO_CLASS = "avro.repo.class";
+  private static final String REPO_CACHE = "avro.repo.cache";
 
   private static final Properties DEFAULTS = new Properties();
   static {
