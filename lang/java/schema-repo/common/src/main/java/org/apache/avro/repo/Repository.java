@@ -23,9 +23,9 @@ package org.apache.avro.repo;
  * can be looked up by name on a {@link Repository}, or registered.<br/>
  * <br/>
  * Registration of a {@link Subject} in a {@link Repository} is done via
- * {@link #register(String, Map)}, which requires the subject name and its
- * configuration.  The configuration is a map of configuration keys
- * to configuration values, both of which are Strings.<br/>
+ * {@link #register(String, SubjectConfig)}, which requires the subject
+ * name and its configuration. The configuration is a map of configuration
+ * keys to configuration values, both of which are Strings.<br/>
  * <br/>
  *
  */
@@ -48,7 +48,7 @@ public interface Repository {
   /**
    * Returns the subject if it exists, null otherwise.
    *
-   * @param subject
+   * @param subjectName
    *          the subject name
    * @return The subject if it exists, null otherwise.
    */
