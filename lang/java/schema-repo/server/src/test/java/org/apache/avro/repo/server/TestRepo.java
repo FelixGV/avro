@@ -28,7 +28,7 @@ public class TestRepo {
   @Test
   public void testRepoInit() throws Exception {
     Properties props = new Properties();
-    props.setProperty("repo.class", InMemoryRepository.class.getName());
+    props.setProperty("avro.repo.class", InMemoryRepository.class.getName());
     props.setProperty("jetty.port", "6782");
 
     RepositoryServer server = new RepositoryServer(props);

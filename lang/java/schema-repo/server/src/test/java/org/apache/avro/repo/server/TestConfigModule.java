@@ -20,7 +20,7 @@ public class TestConfigModule {
   @Test
   public void testConfig() {
     Properties props = new Properties();
-    props.setProperty("repo.class", InMemoryRepository.class.getName());
+    props.setProperty("avro.repo.class", InMemoryRepository.class.getName());
     props.put("validator.rejectAll", Reject.class.getName());
     ConfigModule module = new ConfigModule(props);
     Injector injector = Guice.createInjector(module);
